@@ -17,7 +17,7 @@ model.load_weights('weights/pesos_CNN_puro.h5')
 
 X = []
 files = os.listdir(IMAGE_FOLDER_PATH)
-
+#d
 #files = files[:100]
 for i, filename in enumerate(files):
     img = img_to_array(load_img(os.path.join(IMAGE_FOLDER_PATH, filename))) / 255.
