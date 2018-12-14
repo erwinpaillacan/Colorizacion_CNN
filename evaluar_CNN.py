@@ -13,7 +13,7 @@ batch_size = 10
 image_size = 256
 
 model = generar_modelo(img_size=image_size)
-model.load_weights('weights/pesos_CNN_puro.h5')
+model.load_weights('weights/pesos_CNN_puro_mse.h5')
 
 X = []
 files = os.listdir(IMAGE_FOLDER_PATH)
