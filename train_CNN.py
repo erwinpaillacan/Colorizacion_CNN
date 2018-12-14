@@ -6,9 +6,9 @@ from keras.callbacks import ModelCheckpoint
 
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # or any {'0', '1', '2'}
-nb_train_images = 256 # con cuantas imagenes se quiere entrenar
-batch_size = 32 #se toman de poco
-epocas= 512#cuantas veces se pasa cada batch por la red
+nb_train_images = 82780 # con cuantas imagenes se quiere entrenar
+batch_size = 128 #se toman de poco
+epocas= 256 #cuantas veces se pasa cada batch por la red
 model = generar_modelo(lr=1e-3)
 model.summary()
 
