@@ -6,7 +6,7 @@ from keras.callbacks import ModelCheckpoint
 
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # or any {'0', '1', '2'}
-nb_train_images = 128 # con cuantas imagenes se quiere entrenar
+nb_train_images = 226 # con cuantas imagenes se quiere entrenar
 batch_size = 16 #se toman de poco
 epocas= 5000 #cuantas veces se pasa cada batch por la red
 model = generar_modelo(lr=1e-4)
@@ -29,3 +29,4 @@ model.fit_generator(gen,
                     validation_data=val,
                     validation_steps=1
                     )
+#0.00095

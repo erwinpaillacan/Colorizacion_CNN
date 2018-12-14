@@ -259,7 +259,7 @@ def postprocess_output(X_lab, y, image_size=None):
         cur = np.zeros((image_size, image_size, 3))
         cur[:, :, 0] = X_lab[i, :, :, 0]
         cur[:, :, 1:] = y[i]
-        imsave("results_mse/img_%d.png" % (i + 1), lab2rgb(cur))
+        imsave("results/img_%d.png" % (i + 1), lab2rgb(cur))
 
         if i % (len(y) // 20) == 0:
             print("Se ha procesado un %0.2f de las imagenes de test" % (i / float(len(y)) * 100))
