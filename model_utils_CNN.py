@@ -20,7 +20,6 @@ def y_true_min(yt, yp):
 def y_true_max(yt, yp):
     return K.max(yt)
 
-# conda install  tensorflow-gpu==1.12  cudatoolkit==9.0  cudnn==7.1.2  h5py
 
 
 # shows the minimum value of the predicted AB channels
@@ -74,13 +73,7 @@ def total_loss(y_true, y_pred):
 
 
 def generar_modelo(lr=1e-3, img_size=128):
-    '''
-    Creates a Colorizer model. Note the difference from the report
-    - https://github.com/baldassarreFe/deep-koalarization/blob/master/report.pdf
 
-    I use a long skip connection network to speed up convergence and
-    boost the output quality.
-    '''
     # encoder model
     encoder_ip = Input(shape=(img_size, img_size, 1))
     encoder1 = Conv2D(64, (3, 3), padding='same', activation='relu', strides=(2, 2))(encoder_ip)
@@ -101,7 +94,7 @@ def generar_modelo(lr=1e-3, img_size=128):
     decoder = Conv2DTranspose(2, (3, 3), strides=(2, 2), padding='same', activation='tanh')(decoder)
     decoder = UpSampling2D((2,2))(decoder)
     model = Model([encoder_ip], decoder, name='Colorizer')
-    model.compile(optimizer=Adam(lr), loss=total_loss, metrics=[y_true_max,
+    model.compile(optimizer=Adam(lr), loss='mse', metrics=[y_true_max,
                                                                 y_true_min,
                                                                 y_pred_max,
                                                                 y_pred_min])
