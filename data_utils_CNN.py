@@ -22,7 +22,7 @@ dir=os.getcwd()
 TRAIN_IMAGE_PATH = dir+'/train'
 VALIDATION_IMAGE_PATH = dir+'/validation'
 
-IMAGE_SIZE = 128  # Global constant image size
+IMAGE_SIZE = 256  # Global constant image size
 EMBEDDING_IMAGE_SIZE = 224  # Global constant embedding size
 
 TRAIN_RECORDS_PATH = "data/images.tfrecord"  # local path to tf record directory
@@ -154,7 +154,6 @@ def _process_batch(X, batchsize=100):
     Args:
         X: a RGB image
     '''
-    grayscaled_rgb = gray2rgb(rgb2gray(X))  # convert to 3 channeled grayscale image
     lab_batch = rgb2lab(X)  # convert to LAB colorspace
     X_batch = lab_batch[:, :, :, 0]  # extract L from LAB
     X_batch = X_batch.reshape(X_batch.shape + (1,))  # reshape into (batch, IMAGE_SIZE, IMAGE_SIZE, 1)
@@ -260,7 +259,7 @@ def postprocess_output(X_lab, y, image_size=None):
         cur = np.zeros((image_size, image_size, 3))
         cur[:, :, 0] = X_lab[i, :, :, 0]
         cur[:, :, 1:] = y[i]
-        imsave("results/img_%d.png" % (i + 1), lab2rgb(cur))
+        imsave("results_mse/img_%d.png" % (i + 1), lab2rgb(cur))
 
         if i % (len(y) // 20) == 0:
             print("Se ha procesado un %0.2f de las imagenes de test" % (i / float(len(y)) * 100))

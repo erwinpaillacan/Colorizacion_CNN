@@ -72,7 +72,7 @@ def total_loss(y_true, y_pred):
     return mse_loss + perceptual_loss + attention_loss
 
 
-def generar_modelo(lr=1e-3, img_size=128):
+def generar_modelo(lr=1e-3, img_size=256):
 
     # encoder model
     encoder_ip = Input(shape=(img_size, img_size, 1))
