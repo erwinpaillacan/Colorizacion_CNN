@@ -2,6 +2,8 @@
 # Colorización de Imágenes
 ## Sin transfer learning
 ### Integrantes: Erwin Paillacán- Héctor Zúñiga
+### Arquitectura
+<img src="cnn.jpg" width="750" height="300" /> <br />
 
 ¿Cómo usar?  <br /> 
  
